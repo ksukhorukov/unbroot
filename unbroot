@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative 'passwords_generator.rb'
+require_relative 'passwords_generator'
 
 PasswordsGenerator.generate_and_print_passwords
-
-
