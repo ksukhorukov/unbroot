@@ -9,7 +9,7 @@ class PasswordsGenerator
     @passwords = passwords
   end
 
-  def self.generate_and_print_passwords
+  def self.generate_passwords
     ::PasswordsGenerator.new.generate_passwords
   end
 
