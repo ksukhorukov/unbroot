@@ -1,12 +1,11 @@
-require_relative 'array.rb'
-
 class PasswordsGenerator
-  attr_reader :length, :number, :random_password
+  attr_reader :length, :number, :random_password, :test_mode
 
-  def initialize(length = 200, number = 100_000_000, passwords = [])
+  def initialize(length: 200, number: 100, passwords: [], test_mode: false)
     @length = length
     @number = number
     @passwords = passwords
+    @test_mode = test_mode
   end
 
   def self.generate_passwords
@@ -14,7 +13,7 @@ class PasswordsGenerator
   end
 
   def generate_passwords
-    (1..number).inject(@passwords) { |passwords, _n| passwords.push(generate_random_password) }
+    (1..number).inject(@passwords) { |passwords, _n| passwords.push(e: generate_random_password, test_mode: test_mode) }
     self
   end
 
