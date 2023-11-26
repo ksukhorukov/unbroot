@@ -28,9 +28,7 @@ class Unbroot
   end 
 
   def random_password
-    pass = ''
-    length.times { pass += shuffle.sample.to_s }
-    pass
+    (1..length).inject('') { |pass, n| pass += shuffle.sample.to_s }
   end 
 
   def print_passwords
