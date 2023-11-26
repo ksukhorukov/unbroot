@@ -3,6 +3,7 @@ module Initializer
 
   require 'pry'
   require 'colorize'
+  require 'colorized_string'
   require 'rspec'
 
   def self.included(base)

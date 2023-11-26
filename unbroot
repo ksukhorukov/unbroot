@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative './initializer.rb'
+require_relative './application.rb'
 
-include Initializer
-
-::PasswordsGenerator.generate_passwords
+::Application::perform
