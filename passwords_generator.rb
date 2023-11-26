@@ -11,10 +11,8 @@ class PasswordsGenerator
   end 
 
   def self.generate_and_print_passwords
-    ::PasswordsGenerator.new.send(:generate_passwords).send(:print_passwords)
+    ::PasswordsGenerator.new.generate_passwords.print_passwords
   end 
-
-  private
 
   def generate_passwords
     (1..number).inject(@passwords) { |passwords, n|  passwords << random_password }
@@ -24,10 +22,12 @@ class PasswordsGenerator
   def random_password
     (1..length).inject('') { |pass, n| pass += shuffle.sample.to_s }
   end 
-  
+
   def print_passwords
     passwords.each { |password| puts password }
   end
+  
+  private
 
   def dictionary 
     @dictionary ||=  numbers + letters + symbols
