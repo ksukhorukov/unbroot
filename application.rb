@@ -3,7 +3,7 @@ require_relative './initializer.rb'
 module Application
   include Initializer
 
-  def perform 
+  def self.perform 
     ::PasswordsGenerator.generate_passwords
   end 
 end

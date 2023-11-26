@@ -10,13 +10,13 @@ module Initializer
     require_all
   end
 
-  def make_lib_path(f)
+  def self.make_lib_path(f)
     File.absolute_path f
   end
 
   def self.require_all
     Dir.chdir(LIBS_DIR) do 
-      Dir.glob('*.{rb}').each { |f| require_relative make_lib_path(f) }
+      Dir.glob('*.{rb}').each { |f| require_relative ::Initializer.make_lib_path(f) }
     end
   end
 end
