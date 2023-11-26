@@ -4,7 +4,7 @@ class PasswordsGenerator
   attr_reader :length, :number
   attr_accessor :passwords
 
-  def initialize(length = 50, number = 50)
+  def initialize(length = 200, number = 100)
     @length = length 
     @number = number
     @passwords = []
@@ -26,7 +26,7 @@ class PasswordsGenerator
   def print_passwords
     passwords.each { |password| puts password }
   end
-  
+
   private
 
   def dictionary 
