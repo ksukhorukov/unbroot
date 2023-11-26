@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+class Unbroot 
+  attr_reader :length, :number
+  attr_accessor :passwords
+
+  def initialize(length = 50, number = 50)
+    @length = length 
+    @number = number
+    @passwords = []
+
+    generate_passwords
+    print_passwords
+  end 
+
+  def dictionary 
+   @dictionary ||= (0..9).to_a + ('A'..'z').to_a + ('!'..'?').to_a
+  end 
+
+  def shuffle 
+    dictionary.shuffle
+  end 
+
+  private
+
+  def generate_passwords
+    number.times { @passwords.push random_password }
+  end 
+
+  def random_password
+    pass = ''
+    length.times { pass += shuffle.sample.to_s }
+    pass
+  end 
+
+  def print_passwords
+    passwords.each { |p| puts p }
+  end
+end 
+
+Unbroot.new
+
+
