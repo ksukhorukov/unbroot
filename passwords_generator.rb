@@ -1,9 +1,9 @@
-require 'colorize'
+require_relative 'array.rb'
 
 class PasswordsGenerator
-  attr_reader :length, :number, :random_password, :passwords
+  attr_reader :length, :number, :random_password
 
-  def initialize(length = 200, number = 100, passwords = [])
+  def initialize(length = 200, number = 100_000_000, passwords = [])
     @length = length
     @number = number
     @passwords = passwords
@@ -14,19 +14,15 @@ class PasswordsGenerator
   end
 
   def generate_passwords
-    (1..number).inject(@passwords) { |passwords, _n| passwords << generate_print_return_random_password }
+    (1..number).inject(@passwords) { |passwords, _n| passwords.push(generate_random_password) }
     self
   end
 
-  def generate_print_return_random_password
-    generate_random_password and print_random_password
-  end
-
-  def print_random_password
-    puts random_password.colorize(color: :green, mode: :bold) and return random_password
-  end
-
   private
+
+  def passwords
+    @passwords
+  end
 
   def generate_random_password
     @random_password = (1..length).inject('') { |pass, _n| pass += shuffle.sample.to_s }
