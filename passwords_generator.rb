@@ -4,10 +4,8 @@ class PasswordsGenerator
   attr_reader :length, :number
   attr_accessor :passwords
 
-  def initialize(length = 200, number = 100)
-    @length = length 
-    @number = number
-    @passwords = []
+  def initialize(length = 200, number = 100, passwords = [])
+    @length, @number, @passwords = length, number, passwords
   end 
 
   def self.generate_and_print_passwords
