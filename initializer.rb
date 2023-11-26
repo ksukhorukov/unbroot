@@ -2,6 +2,8 @@ module Initializer
   LIBS_DIR = './lib'
 
   require 'pry'
+  require 'colorize'
+  require 'rspec'
 
   def self.included(base)
     require_all
