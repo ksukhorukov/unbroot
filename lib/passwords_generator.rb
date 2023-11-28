@@ -15,7 +15,7 @@ class PasswordsGenerator
   end
 
   def generate_passwords
-    (1..number).inject(@passwords) { |passwords, _n| passwords.push(params) }
+    (1..number).inject(@passwords) { |passwords, _n| passwords.alt_push(params) }
     self
   end
 

@@ -6,11 +6,12 @@ require 'pry'
 require 'byebug'
 
 class Array
-  attr_reader :e, :test_mode
+  attr_reader :e, :test_mode, :_params
 
-  def push(_params)
-    @e = _params[:element]
-    @test_mode = _params[:test_mode] 
+  def alt_push(_params = {})
+    @_params = _params
+
+    fetch_paramaters_values
     
     self << e
 
@@ -23,6 +24,18 @@ class Array
     puts e.colorize(color: :green, mode: :bold) 
     self 
   end
+
+  def fetch_paramaters_values
+    @e, @test_mode = _values.first, _values.second
+  end 
+
+  def _values
+    _params.fetch_values(:element, :test_mode)
+  end
+
+  def second
+    self[1]
+  end 
 
   def standard_output
     print "#{e}\n"
