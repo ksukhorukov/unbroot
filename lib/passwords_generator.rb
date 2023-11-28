@@ -3,7 +3,7 @@ require 'pry'
 class PasswordsGenerator
   attr_reader :length, :number, :random_password, :test_mode
 
-  def initialize(length: 200, number: 100, passwords: [], test_mode: false)
+  def initialize(length: 200, number: 100_000_000, passwords: [], test_mode: false)
     @length = length
     @number = number
     @passwords = passwords
