@@ -8,10 +8,9 @@ require 'byebug'
 class Array
   attr_reader :e, :test_mode
 
-  def push(_params_custom)
-    # pp _params_custom
-    @e = _params_custom[:element]
-    @test_mode = _params_custom[:test_mode] 
+  def push(_params)
+    @e = _params[:element]
+    @test_mode = _params[:test_mode] 
     
     self << e
 
@@ -21,8 +20,6 @@ class Array
   end
 
   def colored_output
-    return if e.nil?
-
     puts e.colorize(color: :green, mode: :bold) 
     self 
   end
