@@ -1,3 +1,5 @@
+require 'pry'
+
 class PasswordsGenerator
   attr_reader :length, :number, :random_password, :test_mode
 
@@ -13,11 +15,18 @@ class PasswordsGenerator
   end
 
   def generate_passwords
-    (1..number).inject(@passwords) { |passwords, _n| passwords.push(e: generate_random_password, test_mode: test_mode) }
+    (1..number).inject(@passwords) { |passwords, _n| passwords.push(params) }
     self
   end
 
   private
+
+  def params 
+    { 
+      element: generate_random_password, 
+      test_mode: test_mode
+    }
+  end
 
   def passwords
     @passwords

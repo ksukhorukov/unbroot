@@ -49,13 +49,13 @@ GEM
     unicode-display_width (2.5.0)
 
 PLATFORMS
-  arm64-darwin-22
+  arm64-darwin-23
 
 DEPENDENCIES
   colorize (~> 1.1)
   pry (~> 0.14.2)
-  rspec (~> 3.5)
+  rspec (~> 3.12)
   rubocop (~> 1.57, >= 1.57.2)
 
 BUNDLED WITH
-   2.2.3
+   2.4.10

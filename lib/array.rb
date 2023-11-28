@@ -1,11 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'pp'
 require 'colorized_string'
 require 'pry'
+require 'byebug'
 
 class Array
-  attr_reader :e
+  attr_reader :e, :test_mode
 
-  def push(e:, test_mode: false)
-    @e = e
+  def push(_params_custom)
+    # pp _params_custom
+    @e = _params_custom[:element]
+    @test_mode = _params_custom[:test_mode] 
     
     self << e
 
@@ -15,7 +21,9 @@ class Array
   end
 
   def colored_output
-    puts ::ColorizedString[e&.to_s].colorize(color: :green, mode: :bold) 
+    return if e.nil?
+
+    puts e.colorize(color: :green, mode: :bold) 
     self 
   end
 
