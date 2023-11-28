@@ -2,8 +2,11 @@ require_relative '../spec_helper.rb'
 
 RSpec.describe Array do 
   describe 'monkeypatched << operator' do
+
+    let(:params) { Hash.new(element: 1, test_mode: true) }
     it 'successfully saves an element' do 
-      expect((subject.new.push({ element: 1, test_mode: true })).first).to eq(1)
+      subject.new.push(params).first
+      expect(Array.new.push(params).first).to eq(1)
     end
 
     let(:test_array) { subject.new }
