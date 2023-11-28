@@ -15,17 +15,19 @@ class PasswordsGenerator
   end
 
   def generate_passwords
-    (1..number).inject(@passwords) { |passwords, _n| passwords.alt_push(params) }
+    (1..number).inject(@passwords) { |passwords, _n| passwords.push(params) }
     self
   end
 
   private
 
   def params 
-    { 
-      element: generate_random_password, 
-      test_mode: test_mode
-    }
+    ArrayPrintParams.new(
+      { 
+        element: generate_random_password, 
+        test_mode: test_mode
+      }
+    )
   end
 
   def passwords

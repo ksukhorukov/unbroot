@@ -8,6 +8,12 @@ require 'byebug'
 class Array
   attr_reader :e, :test_mode, :_params
 
+  def push(arg)
+    return super unless arg.is_a? ArrayPrintParams
+    
+    alt_push(arg)
+  end 
+
   def alt_push(_params = {})
     @_params = _params
 
