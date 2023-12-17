@@ -3,7 +3,6 @@
 require 'pp'
 require 'colorized_string'
 require 'pry'
-require 'byebug'
 
 class Array
   attr_reader :e, :test_mode, :_params

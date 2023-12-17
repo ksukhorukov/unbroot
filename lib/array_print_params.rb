@@ -1,8 +1,10 @@
+require 'pry'
+
 class ArrayPrintParams
   attr_reader :params, :element, :test_mode
 
-  def initialize(params)
-    @params = params
+  def initialize(params_h)
+    @params = params_h
 
     fetch_paramaters_values
   end 
