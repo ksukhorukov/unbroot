@@ -1,5 +1,7 @@
 module Initializer
-  LIBS_DIR = './lib'
+  HOME_DIRECTORY = ENV['HOME']
+  PROJECT_DIRECTORY = '/workspace/unbroot'
+  LIBS_DIR = HOME_DIRECTORY + PROJECT_DIRECTORY + '/lib/'
 
   require 'pry'
   require 'colorize'
