@@ -18,7 +18,7 @@ Shuffles random alphanumeric and special symbols in order to generate strong and
 ## Installation
 
 ```
-./installer.sh
+installer.sh
 ```
 
 ## Usage
