@@ -8,6 +8,12 @@ Shuffles random alphanumeric and special symbols in order to generate strong and
 
 * Ruby 3.x.x or higher
 
+## Installation
+
+```
+./installer.sh
+```
+
 ## Usage
 
 ```
