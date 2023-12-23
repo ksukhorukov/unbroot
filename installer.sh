@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+MAJOR_VERSION_PART_REQUIRED=3
 
 RUBY_INTERPRETATOR_LOCATION=`which ruby`
 
@@ -10,14 +11,20 @@ else
   exit
 fi
 
-RUBY_VERSION=`ruby -v`
+RUBY_VERSION=`ruby -v | awk '{print $2}'`
 
-if [[ "$RUBY_VERSION" =~ ^'ruby '(\d){1}\.(\d){1}.(\d){1}(.*)$ ]]; then 
-  echo -e "[+] Ruby version is $2.$3.$4"
-else
-  echo '[-] ERROR! Ruby version mismatch. Minimal Ruby version is 3.2.2'
-  exit 
-fi
+MAJOR_VERSION_PART=`echo -e "$RUBY_VERSION" | cut -d. -f1`
+
+if [ $MAJOR_VERSION_PART -ge $MAJOR_VERSION_PART_REQUIRED ]; then 
+  echo -e "[+] Script can be installed. Your Ruby version is $RUBY_VERSION"
+else 
+  echo -e "$MAJOR_VERSION_PART"
+  echo "[-] ERROR! Ruby version mismatch. Minimal Ruby version $MAJOR_VERSION_PART_REQUIRED"
+  exit
+fi 
+
+
+  
 
 
 
