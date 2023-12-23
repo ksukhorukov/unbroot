@@ -10,5 +10,7 @@ else
   exit
 fi
 
+RUBY_VERSION=`ruby -v`
+
 
 
