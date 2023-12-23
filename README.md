@@ -24,7 +24,7 @@ installer.sh
 ## Usage
 
 ```
-$ ./unbroot
+$ unbroot
 
 ...
 UqA.+K?Fe9C\9Wub1cQ<Mo^rx::*b?Zx$Y5v=WlcOa=1e1jS3ri7w'y+Zmri[Kk^8-'ZY%ymkxA2%`Db>W43$$=Z6U7g;GYdkW66`LX0!vuh4=*hDljAyS82hnbRp1,1&E'504YVn+o6/G=>=<][Q56`*kBE:W.$M0Tksas1ah8W7qAJ^kTn4oe4(aOe>8OB:_%l*0;x
