@@ -6,7 +6,7 @@ Shuffles random alphanumeric and special symbols in order to generate strong and
 
 ## Requirements
 
-* Ruby 3.2.2 and higher
+* Ruby 3.x.x or higher
 
 ## Usage
 
