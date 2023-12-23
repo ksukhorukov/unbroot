@@ -3,6 +3,8 @@
 PURPLE='\033[0;35m' 
 RED='\033[0;31m' 
 BLUE='\033[0;34m' 
+WHITE='\033[0;37m' 
+GREEN='\033[0;32m'  
 
 PROFILE_FILE='UNDEFINED'
 
@@ -16,14 +18,20 @@ info() {
   echo -e "$BLUE $1"
 }
 
+white() {
+  echo -e "$WHITE $1"
+}
+
+success() {
+  echo -e "$GREEN $1"
+}
+
 error() {
   echo -e "$RED $1"
   exit
 }
 
 make_shell_profile() {
-  echo 'call'
-  echo -e $1
   export PROFILE_FILE="$HOME/.$1"
 }
 
@@ -47,18 +55,18 @@ else
   exit
 fi 
 
-# BUNDLER_LOCATION=`which bundler`
+BUNDLER_LOCATION=`which bundler`
 
-# if [ -z $BUNDLER_LOCATION ]; then
-#   info '[~] Installing bundler...'
-#   gem install bundler
-# else 
-#   out '[+] Bundler already installed'
-# fi
+if [ -z $BUNDLER_LOCATION ]; then
+  info '[~] Installing bundler...'
+  gem install bundler
+else 
+  out '[+] Bundler already installed'
+fi
   
-# out '[+] Installing gems...'
+out '[+] Installing gems...'
 
-# bundle install
+bundle install
 
 CURRENT_DIRECTORY=`pwd`
 CURRENY_SHELL=`echo -e $SHELL`
@@ -68,25 +76,38 @@ MAC_PROFILE_FILE='zshrc'
 FREEBSD_PROFILE_FILE='tcshrc' 
 OPENBSD_PROFILE_FILE='kshrc'
 
-echo '#####'
-
 if [ -f "$HOME/.$BASH_PROFILE_FILE" ]; then
-  make_shell_profile 'bash'
+  make_shell_profile "$BASH_PROFILE_FILE"
 fi
 
 if [ -f "$HOME/.$MAC_PROFILE_FILE" ]; then
-  make_shell_profile 'macos'
+  make_shell_profile "$MAC_PROFILE_FILE"
 fi
 
 if [ -f "$HOME/.$FREEBSD_PROFILE_FILE" ]; then 
-  make_shell_profile 'freebsd'
+  make_shell_profile "$FREEBSD_PROFILE_FILE" 
 fi
 
 if [ -f "$HOME/.$OPENBSD_PROFILE_FILE" ]; then 
-  make_shell_profile 'openbsd'
+  make_shell_profile "$OPENBSD_PROFILE_FILE"
 fi
 
-echo -e "PATH=\"$PATH:$HOME/$CURRENT_DIRECTORY/unbroot\"" 
+out '[+] Adding UNBROOT to autoload...'
+
+echo -e "PATH=\"$PATH:$HOME/$CURRENT_DIRECTORY/unbroot\"" >> "$PROFILE_FILE"
+
+success '
+[+] Success!
+'
+
+success "
+use 'unbroot' command to enjoy unbrootable passwords....
+"
+
+white "Autoload: Use the following command to reload rc file: \`source $PROFILE_FILE\` or reopen the terminal
+"
+
+
 
 
 
