@@ -23,7 +23,14 @@ else
   exit
 fi 
 
+BUNDLER_LOCATION=`which bundler`
 
+if [ -z $BUNDLER_LOCATION ]; then
+  echo '[~] Installing bundler...'
+  gem install bundler
+else 
+  echo '[+] Bundler already installed'
+fi
   
 
 
