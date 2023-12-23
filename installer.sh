@@ -4,6 +4,7 @@ PURPLE='\033[0;35m'
 RED='\033[0;31m' 
 BLUE='\033[0;34m' 
 
+PROFILE_FILE='UNDEFINED'
 
 MAJOR_VERSION_PART_REQUIRED=3
 
@@ -18,6 +19,12 @@ info() {
 error() {
   echo -e "$RED $1"
   exit
+}
+
+make_shell_profile() {
+  echo 'call'
+  echo -e $1
+  export PROFILE_FILE="$HOME/.$1"
 }
 
 RUBY_INTERPRETATOR_LOCATION=`which ruby`
@@ -40,18 +47,54 @@ else
   exit
 fi 
 
-BUNDLER_LOCATION=`which bundler`
+# BUNDLER_LOCATION=`which bundler`
 
-if [ -z $BUNDLER_LOCATION ]; then
-  info '[~] Installing bundler...'
-  gem install bundler
-else 
-  out '[+] Bundler already installed'
-fi
+# if [ -z $BUNDLER_LOCATION ]; then
+#   info '[~] Installing bundler...'
+#   gem install bundler
+# else 
+#   out '[+] Bundler already installed'
+# fi
   
-out '[+] Installing gems...'
+# out '[+] Installing gems...'
 
-bundle install
+# bundle install
+
+CURRENT_DIRECTORY=`pwd`
+CURRENY_SHELL=`echo -e $SHELL`
+
+BASH_PROFILE_FILE='bashrc' 
+MAC_PROFILE_FILE='zshrc'
+FREEBSD_PROFILE_FILE='tcshrc' 
+OPENBSD_PROFILE_FILE='kshrc'
+
+echo '#####'
+
+if [ -f "$HOME/.$BASH_PROFILE_FILE" ]; then
+  make_shell_profile 'bash'
+fi
+
+if [ -f "$HOME/.$MAC_PROFILE_FILE" ]; then
+  make_shell_profile 'macos'
+fi
+
+if [ -f "$HOME/.$FREEBSD_PROFILE_FILE" ]; then 
+  make_shell_profile 'freebsd'
+fi
+
+if [ -f "$HOME/.$OPENBSD_PROFILE_FILE" ]; then 
+  make_shell_profile 'openbsd'
+fi
+
+echo -e "PATH=\"$PATH:$HOME/$CURRENT_DIRECTORY/unbroot\"" 
+
+
+
+
+
+
+
+
 
 
 
