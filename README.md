@@ -4,6 +4,13 @@
 
 Shuffles random alphanumeric and special symbols in order to generate strong and unbrootable passwords
 
+## SUPPORTED OS
+
+* *nix
+* MacOS
+* FreeBSD
+* OpenBSD
+
 ## Requirements
 
 * Ruby 3.x.x or higher
