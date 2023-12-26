@@ -1,8 +1,14 @@
 # UNBROOT
 
-## Generation Of Unbrootable Passwords In Action
+## DESCRIPTION
+
+```
+
+Generation Of Unbrootable Passwords In Action
 
 Shuffles random alphanumeric and special symbols in order to generate strong and unbrootable passwords
+
+```
 
 ## HOW IT LOOKS LIKE
 
