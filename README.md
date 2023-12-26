@@ -4,6 +4,11 @@
 
 Shuffles random alphanumeric and special symbols in order to generate strong and unbrootable passwords
 
+## HOW IT LOOKS LIKE
+
+![screen](https://github.com/ksukhorukov/unbroot/blob/master/images/example.png?raw=true)
+
+
 ## SUPPORTED OS
 
 * *nix
