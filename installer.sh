@@ -94,7 +94,7 @@ fi
 
 out '[+] Adding UNBROOT to autoload...'
 
-echo -e "PATH=\"$PATH:$HOME/$CURRENT_DIRECTORY/unbroot\"" >> "$PROFILE_FILE"
+echo -e "PATH=\"\$PATH:$CURRENT_DIRECTORY\"" >> "$PROFILE_FILE"
 
 success '
 [+] Success!
