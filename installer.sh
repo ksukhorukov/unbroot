@@ -1,4 +1,4 @@
-# Copyright 2023 KIRILL SUKHORUKOV
+# Copyright 2024 KIRILL SUKHORUKOV
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -10,8 +10,8 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-# You should have received a copy of the GNU General Public License V. 3.0
-# along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>
+# You should have received a copy of the GNU General Public License V.3
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #!/usr/bin/env bash
 
@@ -26,23 +26,23 @@ PROFILE_FILE='UNDEFINED'
 MAJOR_VERSION_PART_REQUIRED=3
 
 out() {
-  echo -e "$PURPLE $1"
+  echo "$PURPLE $1"
 }
 
 info() {
-  echo -e "$BLUE $1"
+  echo "$BLUE $1"
 }
 
 white() {
-  echo -e "$WHITE $1"
+  echo "$WHITE $1"
 }
 
 success() {
-  echo -e "$GREEN $1"
+  echo "$GREEN $1"
 }
 
 error() {
-  echo -e "$RED $1"
+  echo "$RED $1"
   exit
 }
 
@@ -52,23 +52,25 @@ make_shell_profile() {
 
 RUBY_INTERPRETATOR_LOCATION=`which ruby`
 
-if [[ "$RUBY_INTERPRETATOR_LOCATION" =~ ^[A-z0-9\/]+$ ]]; then
-  out '[+] Perfect. You have some Ruby installed...'
-else 
+if [ -z $RUBY_INTERPRETATOR_LOCATION ]; then
+  echo "\n"
   error '[-] ERROR! Ruby interpretator is not installed'
   exit
+else 
+  echo "\n"
+  out '[+] Perfect. You have some Ruby installed...'
 fi
 
 RUBY_VERSION=`ruby -v | awk '{print $2}'`
 
-MAJOR_VERSION_PART=`echo -e "$RUBY_VERSION" | cut -d. -f1`
+MAJOR_VERSION_PART=`echo "$RUBY_VERSION" | cut -d. -f1`
 
-if [ $MAJOR_VERSION_PART -ge $MAJOR_VERSION_PART_REQUIRED ]; then 
-  out "[+] Script can be installed. Your Ruby version is $RUBY_VERSION"
-else 
-  error "[-] ERROR! Ruby version mismatch. Minimal Ruby version $MAJOR_VERSION_PART_REQUIRED"
+if [[ $MAJOR_VERSION_PART -ne $MAJOR_VERSION_PART_REQUIRED ]]; then
+  error "[-] ERROR! Ruby version mismatch. Minimal Ruby version $MAJOR_VERSION_PART_REQUIRED"   
   exit
 fi 
+
+out "[+] Script can be installed. Your Ruby version is $RUBY_VERSION"
 
 BUNDLER_LOCATION=`which bundler`
 
@@ -91,6 +93,8 @@ MAC_PROFILE_FILE='zshrc'
 FREEBSD_PROFILE_FILE='tcshrc' 
 OPENBSD_PROFILE_FILE='kshrc'
 
+CURRENT_DIRECTORY=`pwd`
+
 if [ -f "$HOME/.$BASH_PROFILE_FILE" ]; then
   make_shell_profile "$BASH_PROFILE_FILE"
 fi
@@ -107,20 +111,13 @@ if [ -f "$HOME/.$OPENBSD_PROFILE_FILE" ]; then
   make_shell_profile "$OPENBSD_PROFILE_FILE"
 fi
 
-out '[+] Adding UNBROOT to autoload...'
+out '[+] Adding UNBRØØT to the loadpaths...'
 
-echo -e "PATH=\"\$PATH:$CURRENT_DIRECTORY\"" >> "$PROFILE_FILE"
+NEW_PATH="export PATH=\"\$PATH:$CURRENT_DIRECTORY/\""
 
-success '
-[+] Success!
-'
+echo "$NEW_PATH" >> $PROFILE_FILE
 
-success "
-use 'unbroot' command to enjoy unbrootable passwords....
-"
-
-white "Autoload: Use the following command to reload rc file: \`source $PROFILE_FILE\` or reopen the terminal
-"
+success '[+] Success!\n\n'
 
 
 
