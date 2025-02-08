@@ -54,7 +54,7 @@ S9Gp74u^5=B63X?.#4_jOP%1Ycce#'4(:cUkm='^bZZ.:7+!j9p4([Qg4;&RN=YjC$T/x\CR5qym<0Ii
 
 ```
 
-In order to exit press 'Ctrl + C'
+In order to exit press "Ctrl + C"
 
 ## LICENSE
 
